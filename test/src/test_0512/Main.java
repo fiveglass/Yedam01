@@ -74,7 +74,7 @@ public class Main {
 				break;
 			case 3 :
 				for(int i = 1; i < count; i++) {
-					System.out.println(i + "는" + one +"번 나왔습니다.");
+					System.out.println(i + "는" +  +"번 나왔습니다.");
 				}
 				System.out.println();
 				break;
