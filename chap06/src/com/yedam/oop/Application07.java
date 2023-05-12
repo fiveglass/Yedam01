@@ -1,5 +1,7 @@
 package com.yedam.oop;
 
+import com.yedam.access.Access;
+
 public class Application07 {
 	Application07 app = new Application07();
 	
@@ -31,7 +33,11 @@ public class Application07 {
 		
 		System.out.println("지구반지름"+StaticCal.EARTH_ROUND);
 		
-		
+		Access ac = new Access();
+		ac.free = "public";
+//		ac.parent = "protected";
+//		ac.basic = "default";
+//		ac.privacy = "private";
 	}
 	
 	
