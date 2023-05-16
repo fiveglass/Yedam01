@@ -1,17 +1,22 @@
 package hw;
 
 public class ObesityInfo extends StandardWeightInfo {
-	double overweight;
+
+	double Obesity;
+	
+	ObesityInfo(String name, int height, int weight) {
+		super(name, height, weight);
+		this.Obesity = getObesity();
+	}
+	
 	
 	@Override
 	public void getInformation() {
-		System.out.println(overweight);
+		super.getInformation();
+		System.out.println(Obesity);
 	}
 	
 	public double getObesity() {
-		return overweight = (weight - rweight)/ rweight * 100;
-		if()
+		return ((weight - rweight) / rweight) * 100;
 	}
-	
-	
 }
