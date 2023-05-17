@@ -6,7 +6,7 @@ public interface Keypad {
 	
 	public abstract void leftUpButton();
 	public abstract void leftDownButton();
-	public abstract void rightUpButton(int mode);
-	public abstract void rightDownButton(int mode);
-	public abstract void changeMode(int mode);
+	public abstract void rightUpButton();
+	public abstract void rightDownButton();
+	public abstract void changeMode();
 }

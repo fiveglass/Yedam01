@@ -5,23 +5,22 @@ public class application01 {
 		Keypad keypad = new RPGgame();
 		
 		keypad.leftUpButton();
-		keypad.leftDownButton();
+		keypad.rightUpButton();
 		keypad.changeMode();
 		keypad.rightUpButton();
 		keypad.rightDownButton();
 		keypad.changeMode();
-		keypad.rightUpButton();
+		keypad.rightDownButton();
 		System.out.println("=================");
 		
-		Keypad keypad2 = new ArcadeGame();
+		keypad = new ArcadeGame();
 		
-		keypad2.leftUpButton();
-		keypad2.rightUpButton();
-		keypad2.leftDownButton();
-		keypad2.changeMode();
-		keypad2.rightUpButton();
-		keypad2.leftUpButton();
-		keypad2.rightDownButton();
+		keypad.leftUpButton();
+		keypad.rightUpButton();
+		keypad.leftDownButton();
+		keypad.changeMode();
+		keypad.rightUpButton();
+		keypad.leftUpButton();
+		keypad.rightDownButton();
 	}
-	
 }
