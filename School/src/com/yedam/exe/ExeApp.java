@@ -33,16 +33,19 @@ public class ExeApp {
 			case "5":			
 				ss.updateStd();
 				break;
-			case "6":				
+			case "6":	
+				ss.getAnalyze();
 				break;
-			case "7":				
+			case "7":	
+				System.out.println("prog ");
 				break;
 
 			}
 			
 		}
 	}
-
+	
+	//분석 -> 전공별 성적 합계 및 성적 평균
 	private void menu() {
 		System.out.println("1. 전체 학생 조회 | 2. 학번 조회 | 3. 학생 등록"
 				+ " | 4. 학생 정보 삭제 | 5. 전공 변경 | 6. 분석 | 7. 종료 ");

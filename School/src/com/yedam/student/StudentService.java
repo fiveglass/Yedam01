@@ -92,4 +92,22 @@ public class StudentService {
 			System.out.println("▼ 학생 전공 수정 실패 ▼");
 		}
 	}
+	
+	//전공별 성적 합계, 평균 ->db에서 조회된 정보를 활용해서 만드는 방식
+	//java(복잡도 up) : 전공확인, 배열 넣기, 전공별로 합계 또는 평균
+	//데이터는 db에서 왠만하면 처리하고 java로 넘기는 것이 수월
+	
+	public void getAnalyze() {
+		List<Student> list = StudentDAO.getInstance().getAnalyze();
+		for(int i= 0;  i<list.size(); i++) {
+			System.out.println("===========================");
+			System.out.println("| 전공 : " + list.get(i).getStdMajor());
+			System.out.println("| 합계 : " + list.get(i).getSum());
+			System.out.println("| 평균 : " + list.get(i).getAvg());
+			System.out.println("| 학생수 : " + (int)(list.get(i).getSum()/list.get(i).getAvg())+"명");
+			
+		}
+	}
 }
+
+	
