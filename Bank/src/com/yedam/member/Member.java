@@ -10,7 +10,22 @@ public class Member {
 	private String memberPw;
 	private String memberName;
 	private String memberAuth;
+	//계좌조회를 위한 필드추가
+	private String account_id;
+	private int accountBalance;
 	
+	public String getAccount_id() {
+		return account_id;
+	}
+	public void setAccount_id(String account_id) {
+		this.account_id = account_id;
+	}
+	public int getAccountBalance() {
+		return accountBalance;
+	}
+	public void setAccountBalance(int accountBalance) {
+		this.accountBalance = accountBalance;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
