@@ -63,7 +63,10 @@ public class MemberDAO extends DAO {
 				member = new Member();
 				member.setMemberId(rs.getString("member_id"));
 				member.setAccount_id(rs.getString("account_id"));
-				
+				member.setAccountBalance(rs.getInt("account_balance"));
+				member.setMemberName(rs.getString("member_name"));
+				member.setMemberAuth(rs.getString("member_auth"));
+				list.add(member);
 			}
 			
 		}catch(Exception e) {
