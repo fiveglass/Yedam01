@@ -10,7 +10,7 @@ public class ClassService {
 	public void classIndex() {
 		System.out.println("🔎조회하고 싶은 학기를 입력해주세요.");
 		String classSemester = sc.nextLine();
-		System.out.println("| " + classSemester +" 강좌목록");
+		System.out.println("| '" + classSemester +" 강좌목록");
 		System.out.println("=======================================");
 		List<Class> list = ClassDAO.getInstance().classIndex(classSemester);
 		if(list.size() == 0) {

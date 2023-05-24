@@ -5,6 +5,8 @@ public class Ing {
 	private String memberId;
 	private int classNo;
 	private String className;
+	private String classSemester;
+	private int ingTuition;
 	
 	public int getIngNo() {
 		return ingNo;
@@ -30,6 +32,19 @@ public class Ing {
 	public void setClassName(String className) {
 		this.className = className;
 	}
+	public String getClassSemester() {
+		return classSemester;
+	}
+	public void setClassSemester(String classSemester) {
+		this.classSemester = classSemester;
+	}
+	public int getIngTuition() {
+		return ingTuition;
+	}
+	public void setIngTuition(int ingTuition) {
+		this.ingTuition = ingTuition;
+	}
+	
 	
 	
 }

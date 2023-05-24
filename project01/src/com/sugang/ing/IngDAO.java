@@ -61,12 +61,37 @@ public class IngDAO extends DAO{
 			pstmt.setInt(2, classno);
 			
 			result = pstmt.executeUpdate();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			disconn();
 		}
 		return result;
+	}
+	
+	//내정보관리 : 수강취소 - 환불금액정보
+	public Ing refundClass(int classno) {
+		Ing ing = null;
+		try {
+			conn();
+			String sql = "SELECT * FROM ing WHERE member_id = ? AND class_no = ?";
+			pstmt.setString(1, MemberService.memberInfo.getMemberId());
+			pstmt.setInt(2, classno);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ing = new Ing();
+				ing.setClassSemester(rs.getString("class_semester"));
+				ing.setIngTuition(rs.getInt("ing_tuition"));
+			}
+			
+		}catch(Exception e) {
+			
+		}finally {
+			disconn();
+		}
+		return ing;
 	}
 	
 }
