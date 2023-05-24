@@ -5,6 +5,7 @@ public class Cart {
 	private int classNo;
 	private int cartNo;
 	private String cartComplete;
+	private String test;
 	
 	public String getMemberId() {
 		return memberId;
