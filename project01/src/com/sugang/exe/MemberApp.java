@@ -2,9 +2,15 @@ package com.sugang.exe;
 
 import java.util.Scanner;
 
+import com.sugang.clas.ClassService;
+import com.sugang.ing.IngService;
+import com.sugang.member.MemberService;
+
 public class MemberApp {
 	Scanner sc = new Scanner(System.in);
-	//MemberService ms = new MemberService();
+	MemberService ms = new MemberService();
+	IngService ing = new IngService();
+	ClassService cs = new ClassService();
 	
 	public MemberApp() {
 		memberGo();
@@ -21,21 +27,25 @@ public class MemberApp {
 				System.out.println("1.내정보 조회 | 2.수강내역 조회 | 3.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-					
+					ms.mypageMemberInfo();
 				}else if(selectNo.equals("2")){
-					
+					ing.mypageStudying();
 				}else {
 					run=false;
 				}
 				break;
 			case "2" :
 				System.out.println("*** *** 내 정 보 관 리 *** ***");
-				System.out.println("1.연락처수정 | 2.회원삭제 | 3.뒤로가기");
+				System.out.println("1.비밀번호수정 | 2.연락처수정 | 3.주소수정 | 4.수강취소 | 5.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-									
+					ms.modifyPw();				
 				}else if(selectNo.equals("2")) {
-									
+					ms.modifyPhone();				
+				}else if(selectNo.equals("3")){
+					ms.modifyAddr();
+				}else if(selectNo.equals("4")) {
+					ing.deleteStudying();
 				}else {
 					run=false;
 				}
@@ -56,21 +66,24 @@ public class MemberApp {
 				break;
 			case "4" : 
 				System.out.println("*** *** 강 좌 조 회 *** ***");
-				System.out.println("1.강좌목록 | 2.강좌정보 | 3.뒤로가기");
+				System.out.println("1.강좌목록 및 상세보기 | 2.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-									
-				}else if(selectNo.equals("2")) {
-										
+					cs.classIndex();				
 				}else {
 					run=false;
 				}
+				break;
+			case "5" : 
+				MemberService.memberInfo = null;
+				run=false;
 				break;
 			}
 		}
 	}
 	
 	public void memberMenu() {
-		System.out.println("1.마이페이지 | 2.내정보관리 | 3.수강꾸러미 | 4.강좌조회");
+		System.out.println("1.마이페이지 | 2.내정보관리 | 3.수강꾸러미 | 4.강좌조회 | 5.로그아웃");
+		
 	}
 }
