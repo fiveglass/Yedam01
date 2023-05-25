@@ -60,7 +60,7 @@ public class MemberService {
 		if(result > 0) {
 			System.out.println("회원 등록");
 		} else {
-			System.out.println("회원 실패");
+			System.out.println("회원 등록 실패");
 		}
 	}
 	

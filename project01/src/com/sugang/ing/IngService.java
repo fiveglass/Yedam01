@@ -1,8 +1,6 @@
 package com.sugang.ing;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,20 +34,24 @@ public class IngService {
 				}
 				System.out.println("-----------------------------");
 				System.out.println("수강 취소 할 강좌번호를 입력하세요.");
-				int classno = sc.nextInt();
+				int classno = Integer.parseInt(sc.nextLine());
 				
 				Ing ing = IngDAO.getInstance().refundClass(classno);
 				
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				Date semester1 = formatter.parse("2023-01-01");
-				Date semester2 = formatter.parse("2023-04-01");
-				Date semester3 = formatter.parse("2023-07-01");
-				Date semester4 = formatter.parse("2023-10-01");
-				Date startdate = new Date();
+				LocalDate date = LocalDate.now();
+				
+				int year = 2023, month=1, dayOfMonth=1;
+				LocalDate date1  = LocalDate.of(year, month, dayOfMonth);
+				
+				
 				if(ing.getClassSemester().equals("1학기")) {
-					startdate = semester1;
-					if(formatter.after(semester1, 1)) {
-						
+					
+					if(date.isBefore(date1.plusMonths(1)) ) {
+						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/2 + "원 입니다.");
+					}else if(date.isBefore(date1.plusMonths(2)) ){
+						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/4 + "원 입니다.");
+					}else {
+						System.out.println("수강 취소 시 환불금액은 0원 입니다.");
 					}
 				}
 				

@@ -99,6 +99,7 @@ public class MemberDAO extends DAO {
 		}
 		return list;
 	}
+	
 	//내정보관리 : 비밀번호수정
 	public int modifyPw(Member member) {
 		int result = 0;

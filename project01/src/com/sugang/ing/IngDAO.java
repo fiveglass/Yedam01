@@ -76,22 +76,32 @@ public class IngDAO extends DAO{
 		try {
 			conn();
 			String sql = "SELECT * FROM ing WHERE member_id = ? AND class_no = ?";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, MemberService.memberInfo.getMemberId());
 			pstmt.setInt(2, classno);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				ing = new Ing();
 				ing.setClassSemester(rs.getString("class_semester"));
 				ing.setIngTuition(rs.getInt("ing_tuition"));
+				
 			}
 			
-		}catch(Exception e) {
 			
+		}catch(Exception e) {
+			e.printStackTrace();
 		}finally {
 			disconn();
 		}
 		return ing;
 	}
-	
+	 
 }
+
+	
+	
+	
+	
+	
+	

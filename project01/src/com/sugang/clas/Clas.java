@@ -1,6 +1,6 @@
 package com.sugang.clas;
 
-public class Class {
+public class Clas {
 	private int classNo;
 	private String className;
 	private String classTeacher;

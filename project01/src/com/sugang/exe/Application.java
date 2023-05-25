@@ -32,7 +32,7 @@ public class Application {
 				if(MemberService.memberInfo.getMemberType().equals("M")) {
 					new MemberApp();
 				}else if(MemberService.memberInfo.getMemberType().equals("H")) {
-					//관리자
+					new ManagerApp();
 				}
 			}
 		}

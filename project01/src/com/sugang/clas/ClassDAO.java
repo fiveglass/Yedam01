@@ -22,9 +22,9 @@ public class ClassDAO extends DAO {
 	
 	
 	//강좌조회 : 강좌목록
-	public List<Class> classIndex(String classSemester) {
-		List<Class> list = new ArrayList<>();
-		Class cs = null;
+	public List<Clas> classIndex(String classSemester) {
+		List<Clas> list = new ArrayList<>();
+		Clas cs = null;
 		try {
 			conn();
 			String sql = "SELECT * FROM class WHERE class_semester = ? ORDER BY 1";
@@ -34,7 +34,7 @@ public class ClassDAO extends DAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				cs = new Class();
+				cs = new Clas();
 				cs.setClassNo(rs.getInt("class_no"));
 				cs.setClassName(rs.getString("class_name"));
 				cs.setClassTeacher(rs.getString("class_teacher"));
@@ -55,8 +55,8 @@ public class ClassDAO extends DAO {
 	}
 	
 	//강좌조회 : 강좌목록 (상세)
-	public Class indexContent(int classno) {
-		Class cs = null;
+	public Clas indexContent(int classno) {
+		Clas cs = null;
 		try {
 			conn();
 			String sql = "SELECT * FROM class WHERE class_no = ? ";
@@ -65,7 +65,7 @@ public class ClassDAO extends DAO {
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				cs = new Class();
+				cs = new Clas();
 				cs.setClassExplain(rs.getString("class_explain"));
 				cs.setClassName(rs.getString("class_name"));
 			}

@@ -12,7 +12,7 @@ public class ClassService {
 		String classSemester = sc.nextLine();
 		System.out.println("| '" + classSemester +" 강좌목록");
 		System.out.println("=======================================");
-		List<Class> list = ClassDAO.getInstance().classIndex(classSemester);
+		List<Clas> list = ClassDAO.getInstance().classIndex(classSemester);
 		if(list.size() == 0) {
 			System.out.println("해당학기 수업은 존재하지 않습니다.");
 		}else {
@@ -32,7 +32,7 @@ public class ClassService {
 			if(classno == 0) {
 				return;
 			}else {
-				Class cs = ClassDAO.getInstance().indexContent(classno);
+				Clas cs = ClassDAO.getInstance().indexContent(classno);
 				if(cs != null) {
 					System.out.println("🔎" + cs.getClassName() + "'의 강의 내용");
 					System.out.println(cs.getClassExplain());
