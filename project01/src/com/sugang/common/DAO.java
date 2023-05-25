@@ -24,7 +24,7 @@ public class DAO {
 
 	// DB 접속 정보
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String id = "c##sugang";
 	String pw = "1234";
 

@@ -21,6 +21,7 @@ public class IngService {
 	
 	
 	//내정보관리 : 수강취소
+		String selectNo = null;
 		public void deleteStudying() {
 			List<Ing> list = IngDAO.getInstance().mypagestudying();
 			if(list.size() == 0) {
@@ -40,27 +41,37 @@ public class IngService {
 				
 				LocalDate date = LocalDate.now();
 				
-				int year = 2023, month=1, dayOfMonth=1;
-				LocalDate date1  = LocalDate.of(year, month, dayOfMonth);
-				
+				LocalDate date1  = LocalDate.of(2023, 1, 1);
+				LocalDate date2  = LocalDate.of(2023, 7, 1);
 				
 				if(ing.getClassSemester().equals("1학기")) {
 					
-					if(date.isBefore(date1.plusMonths(1)) ) {
+					if(date.isBefore(date1.plusMonths(2)) ) {
 						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/2 + "원 입니다.");
-					}else if(date.isBefore(date1.plusMonths(2)) ){
+					}else if(date.isBefore(date1.plusMonths(4)) ){
+						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/4 + "원 입니다.");
+					}else {
+						System.out.println("수강 취소 시 환불금액은 0원 입니다.");
+					}
+				}else if(ing.getClassSemester().equals("2학기")) {
+					if(date.isBefore(date2.plusMonths(2)) ) {
+						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/2 + "원 입니다.");
+					}else if(date.isBefore(date2.plusMonths(4)) ) {
 						System.out.println("수강 취소 시 환불금액은" + ing.getIngTuition()/4 + "원 입니다.");
 					}else {
 						System.out.println("수강 취소 시 환불금액은 0원 입니다.");
 					}
 				}
-				
-				int result = IngDAO.getInstance().deleteStudying(classno);
-				
-				if(result > 0) {
-					System.out.println("👌수강취소 완료");
-				}else {
-					System.out.println("🤞수강취소 실패");
+				System.out.println("환불하시겠습니까? 1.⭕ | 2.❌");
+				selectNo = sc.nextLine();
+				if(selectNo.equals("1")) {
+					int result = IngDAO.getInstance().deleteStudying(classno);
+					
+					if(result > 0) {
+						System.out.println("👌수강취소 완료");
+					}else {
+						System.out.println("🤞수강취소 실패");
+					}
 				}
 			}
 		}
