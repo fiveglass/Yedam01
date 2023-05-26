@@ -57,7 +57,7 @@ public class MemberApp {
 				System.out.println("1.수강신청 | 2.수강신청꾸러미 | 3.수강신청내역 | 4.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-									
+					cts.apply();			
 				}else if(selectNo.equals("2")) {
 					cts.CartIndex();			
 				}else if(selectNo.equals("3")) {

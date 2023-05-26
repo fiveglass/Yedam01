@@ -6,9 +6,23 @@ public class Cart {
 	private int cartNo;
 	private String cartComplete;
 	private String className;
+	private int classLimit;
+	private int classNumber;
 	
 	
 	
+	public int getClassLimit() {
+		return classLimit;
+	}
+	public void setClassLimit(int classLimit) {
+		this.classLimit = classLimit;
+	}
+	public int getClassNumber() {
+		return classNumber;
+	}
+	public void setClassNumber(int classNumber) {
+		this.classNumber = classNumber;
+	}
 	public String getClassName() {
 		return className;
 	}

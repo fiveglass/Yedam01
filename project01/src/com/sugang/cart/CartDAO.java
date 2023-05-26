@@ -22,7 +22,102 @@ public class CartDAO extends DAO{
 		return cartDao;
 	}
 	
+	//수강꾸러미 : 수강신청 - 수강꾸러미 목록 
+	public List<Cart> applyIndex() {
+		List<Cart> list = new ArrayList<>();
+		Cart ct = null;
+		try {
+			conn();
+			String sql = "SELECT c.class_no, s.class_name \r\n"
+					+ "FROM cart c join class s on c.class_no = s.class_no \r\n"
+					+ "WHERE member_id = ? AND cart_complete = 'N'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, MemberService.memberInfo.getMemberId());
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ct = new Cart();
+				ct.setCartNo(rs.getInt("class_no"));
+				ct.setClassName(rs.getString("class_name"));
+				list.add(ct);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return list;
+	}
+	
+	//수강신청 : 정원확인
+	public Cart limitCheck(int classNo) {
+		Cart crt = null;
+//		int result = 0;
+		try {
+			conn();
+			String sql = "SELECT class_limit, class_number FROM class WHERE class_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				crt = new Cart();
+				crt.setClassLimit(rs.getInt("class_limit"));
+				crt.setClassNumber(rs.getInt("class_number"));
+			}	
+			
+//			String sql2 = "UPDATE class SET class_number = class_number+1 WHERE class_no = ?";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, classNo);
+//			result = pstmt.executeUpdate();
+//			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return crt;
+	}
+	
+	//수강신청 : 정원 더하기
+	public int plusMember(int classNo) {
+		int result = 0;
+		try {
+			conn();
+			String sql = "UPDATE class SET class_number = class_number+1 WHERE class_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, classNo);
+			
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return result;
+	}
+	
+	
 	//수강꾸러미 : 수강신청
+	public int apply(int classNo) {
+		int result = 0;
+		try {
+			conn();
+			String sql ="UPDATE cart SET cart_complete = 'Y' \r\n"
+					+ "WHERE member_id = ? AND class_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, MemberService.memberInfo.getMemberId());
+			pstmt.setInt(2, classNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return result;
+	}
 	
 	
 	//수강꾸러미 : 수꾸 - 목록조회
@@ -48,8 +143,7 @@ public class CartDAO extends DAO{
 				 list.add(cs);
 				 
 			 }
-			 
-			
+	
 		 }catch(Exception e) {
 			 e.printStackTrace();
 		 }finally {
@@ -102,7 +196,6 @@ public class CartDAO extends DAO{
 				list.add(cs);
 			}
 			
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -116,7 +209,7 @@ public class CartDAO extends DAO{
 		int result = 0;
 		try {
 			conn();
-			String sql = "insert into cart values (cart_seq.nextval, 'Y', ?, ?)";
+			String sql = "insert into cart values (cart_seq.nextval, 'N', ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, MemberService.memberInfo.getMemberId());
 			pstmt.setInt(2, classNo);

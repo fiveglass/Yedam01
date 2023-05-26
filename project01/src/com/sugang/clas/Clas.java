@@ -59,5 +59,14 @@ public class Clas {
 		this.classexplain = explain;
 	}
 	
+	@Override
+	public String toString() {
+		return "Clas [classNo=" + classNo + ", className=" + className + ", classTeacher=" + classTeacher
+				+ ", classLimit=" + classLimit + ", classnumber=" + classnumber + ", classDate=" + classDate
+				+ ", classSemester=" + classSemester + ", classexplain=" + classexplain + "]";
+	}
+	
+	
+	
 	
 }
