@@ -2,6 +2,7 @@ package com.sugang.exe;
 
 import java.util.Scanner;
 
+import com.sugang.cart.CartService;
 import com.sugang.clas.ClassService;
 import com.sugang.ing.IngService;
 import com.sugang.member.MemberService;
@@ -11,6 +12,7 @@ public class MemberApp {
 	MemberService ms = new MemberService();
 	IngService ing = new IngService();
 	ClassService cs = new ClassService();
+	CartService cts = new CartService();
 	
 	public MemberApp() {
 		memberGo();
@@ -57,9 +59,9 @@ public class MemberApp {
 				if(selectNo.equals("1")) {
 									
 				}else if(selectNo.equals("2")) {
-										
+					cts.CartIndex();			
 				}else if(selectNo.equals("3")) {
-					
+					cts.applyStory();
 				}else {
 					run=false;
 				}

@@ -5,8 +5,16 @@ public class Cart {
 	private int classNo;
 	private int cartNo;
 	private String cartComplete;
-	private String test;
+	private String className;
 	
+	
+	
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
