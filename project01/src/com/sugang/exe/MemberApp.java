@@ -71,7 +71,8 @@ public class MemberApp {
 				System.out.println("1.강좌목록 및 상세보기 | 2.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-					cs.classIndex();				
+					String classSemester = cs.inputClassSemester();
+					cs.classIndex(classSemester);			
 				}else {
 					run=false;
 				}

@@ -22,13 +22,24 @@ public class ClassDAO extends DAO {
 	
 	
 	//강좌조회 : 강좌목록
-	public List<Clas> classIndex(String classSemester) {
+	public List<Clas> classIndex(int page, String classSemester) {
 		List<Clas> list = new ArrayList<>();
 		Clas cs = null;
 		try {
 			conn();
-			String sql = "SELECT * FROM class WHERE class_semester = ? ORDER BY 1";
+			
+			int start = 1 + (page-1) *5;
+			int end = 5*page;
+			
+			String sql = "SELECT * \r\n"
+					+ "FROM (SELECT ROWNUM NUM, N.* \r\n"
+					+ "FROM (SELECT *\r\n"
+					+ "FROM class where class_semester = ? ORDER BY class_no ASC) N  )\r\n"
+					+ "WHERE NUM BETWEEN ? and ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, classSemester);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			pstmt.setString(1, classSemester);
 			
 			rs = pstmt.executeQuery();

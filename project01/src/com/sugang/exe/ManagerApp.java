@@ -24,13 +24,14 @@ public class ManagerApp {
 				System.out.println("1.전체 수강생 조회 | 2.전화번호로 조회 | 3.이름으로 조회 | 4.강좌로 조회 | 5.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-					
+					mns.getMemberList();
 				}else if (selectNo.equals("2")) {
 					mns.referPhone();
 				}else if (selectNo.equals("3")) {
 					mns.referName();
 				}else if (selectNo.equals("4")) {
-					
+					int classNo = mns.inputClassNo();
+					mns.referClass(classNo);
 				}else {
 					run=false;
 				}
@@ -65,12 +66,10 @@ public class ManagerApp {
 				break;	
 			case "4" :
 				System.out.println("*** *** 수 강 내 역 관 리 *** ***");
-				System.out.println("1.강좌 중 내역 | 2.강좌 신청 내역 | 3.뒤로가기");
+				System.out.println("1.수강 신청 내역 | 2.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
-					
-				}else if (selectNo.equals("2")) {
-					
+					mns.completeCartList();
 				}else {
 					run=false;
 				}

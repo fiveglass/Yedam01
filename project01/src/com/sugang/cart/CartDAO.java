@@ -52,7 +52,6 @@ public class CartDAO extends DAO{
 	//수강신청 : 정원확인
 	public Cart limitCheck(int classNo) {
 		Cart crt = null;
-//		int result = 0;
 		try {
 			conn();
 			String sql = "SELECT class_limit, class_number FROM class WHERE class_no = ?";
@@ -65,12 +64,7 @@ public class CartDAO extends DAO{
 				crt.setClassLimit(rs.getInt("class_limit"));
 				crt.setClassNumber(rs.getInt("class_number"));
 			}	
-			
-//			String sql2 = "UPDATE class SET class_number = class_number+1 WHERE class_no = ?";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, classNo);
-//			result = pstmt.executeUpdate();
-//			
+					
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -3,13 +3,126 @@ package com.sugang.manager;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sugang.cart.Cart;
 import com.sugang.clas.Clas;
+import com.sugang.ing.Ing;
 import com.sugang.member.Member;
-import com.sugang.member.MemberDAO;
+import com.sugang.utils.pageMenu;
 
 public class ManagerService {
 	
 	Scanner sc = new Scanner(System.in);
+	
+	private int page = 1;
+	
+	public ManagerService() {
+		
+	}
+	
+	//회원조회 : 전체조회
+	public void getMemberList() {
+		String plusQuery = "member";
+		int count = ManagerDAO.getInstance().getCount(plusQuery);
+		int lastPage = count/5;
+		lastPage = count%5 > 0 ? lastPage+1 : lastPage;
+		if(page == 0) {
+			page = 1;
+			return;
+		}
+		List<Member> list = ManagerDAO.getInstance().getMemberList(page);
+		System.out.printf("🚻 전체회원조회 : 총 %d 명\n", count);
+		System.out.println("============================================================================================================");
+		if (list.size() == 0) {
+			System.out.println("| 정보가 입력이 되어 있지 않습니다.");
+		} else {
+			for (int i = 0; i < list.size(); i++) {
+				System.out.print("| 아이디 : " + list.get(i).getMemberId() + "\t");
+				System.out.print(" | 이름 : " + list.get(i).getMemberName() + "\t");
+				System.out.print(" | 연락처 : " + list.get(i).getMemberPhone() + "\t");
+				System.out.print(" | 주소 : " + list.get(i).getMemberAddr() + "\t");
+				System.out.print(" | 생년월일 : " + list.get(i).getMemberBirth() + "\t");
+				System.out.println(" | 회원등록일 : " + list.get(i).getMemberJoin());
+			}
+			System.out.println("============================================================================================================");
+			System.out.printf("                   %d/%d pages\n" , page, lastPage);
+			
+			page = pageMenu.getPageMenu(page, sc, plusQuery);
+			getMemberList();
+		}	
+	}
+	
+	//수강내역관리 : 수강신청내역
+	public void completeCartList() {
+		String plusQuery = "Cart";
+		int count = ManagerDAO.getInstance().getCount(plusQuery);
+		int lastPage = count/5;
+		lastPage = count%5 > 0 ? lastPage+1 : lastPage;
+		if(page == 0) {
+			page = 1;
+			return;
+		}
+		List<Cart> list = ManagerDAO.getInstance().completeCartList(page);
+		System.out.printf("🚻 수강신청내역조회 : 총 %d 건\n", count);
+		System.out.println("============================================================================================================");
+		if (list.size() == 0) {
+			System.out.println("| 정보가 입력이 되어 있지 않습니다.");
+		} else {
+			for (int i = 0; i < list.size(); i++) {
+				System.out.print((i+1) + ". ");
+				System.out.print("| 아이디 : " + list.get(i).getMemberId() + "\t");
+				System.out.print(" | 강좌번호 : " + list.get(i).getClassNo() + "\t");
+				System.out.println(" | 강좌명 : " + list.get(i).getClassName() + "\t");
+			}
+			System.out.println("============================================================================================================");
+			System.out.printf("                   %d/%d pages\n" , page, lastPage);
+			
+			page = pageMenu.getPageMenu(page, sc, plusQuery);
+			completeCartList();
+		}
+	}
+	
+	
+	//회원조회 : 강좌로 조회 메뉴
+	public int inputClassNo() {
+		System.out.println("🧾강좌번호를 입력하여 해당 강좌 수강생 확인");
+		int classNo = Integer.parseInt(sc.nextLine());
+		
+		return classNo;
+	}
+	
+	//회원조회 : 강좌로 조회
+	public void referClass(int classNo) {
+		String plusQuery = "ing i join member m on i.member_id = m.member_id\r\n"
+				+ "where i.class_no = ";
+		plusQuery = plusQuery + String.valueOf(classNo);
+		
+		int count = ManagerDAO.getInstance().getCount(plusQuery);
+		int lastPage = count/5;
+		lastPage = count%5 > 0 ? lastPage+1 : lastPage;
+		if(page == 0) {
+			page = 1;
+			return;
+		}
+		List<Ing> list = ManagerDAO.getInstance().referClass(page, classNo);
+		System.out.println("============================================================================================================");
+		System.out.printf("🚻 해당 강좌 수강생 : 총 %d 명\n", count);
+		if(list.size()==0) {
+			System.out.println("조회할 정보가 없습니다.");
+		}else {
+			for(int i = 0; i<list.size(); i++) {	
+				System.out.print("| 강좌이름 : " + list.get(i).getClassName());
+				System.out.print(" | 아이디 : " + list.get(i).getMemberId());
+				System.out.print(" | 이름 : " + list.get(i).getMemberName());
+				System.out.println(" | 연락처 : " + list.get(i).getMemberPhone());
+			}
+			System.out.println("============================================================================================================");
+			System.out.printf("                   %d/%d pages\n" , page, lastPage);
+
+			page = pageMenu.getPageMenu(page, sc, plusQuery);
+			referClass(classNo);
+		}
+	}
+
 	
 	//회원조회 : 전화번호 조회
 	public void referPhone() {
@@ -51,6 +164,7 @@ public class ManagerService {
 		}
 	}
 	
+	
 	//회원관리 : 연락처수정
 	public void updatePhone() {
 		Member member = new Member();
@@ -67,6 +181,7 @@ public class ManagerService {
 			System.out.println("🤞 연락처 변경이 실패하였습니다.");
 		}
 	}
+	
 	
 	//회원관리 : 회원삭제
 	public void deleteMemder() {
@@ -183,4 +298,6 @@ public class ManagerService {
 			System.out.println("🤞 강의 삭제를 실패하였습니다.");
 		}
 	}
+
+	
 }

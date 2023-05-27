@@ -8,6 +8,22 @@ public class Ing {
 	private String classSemester;
 	private int ingTuition;
 	
+	//강좌조회를 위한 새로운 필드선언
+	private String memberName;
+	private int memberPhone;
+	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public int getMemberPhone() {
+		return memberPhone;
+	}
+	public void setMemberPhone(int memberPhone) {
+		this.memberPhone = memberPhone;
+	}
 	public int getIngNo() {
 		return ingNo;
 	}

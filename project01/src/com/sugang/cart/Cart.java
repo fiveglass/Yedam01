@@ -5,12 +5,13 @@ public class Cart {
 	private int classNo;
 	private int cartNo;
 	private String cartComplete;
+	
+	//조회를 위한 새로운 필드선언
 	private String className;
 	private int classLimit;
 	private int classNumber;
 	
-	
-	
+
 	public int getClassLimit() {
 		return classLimit;
 	}
