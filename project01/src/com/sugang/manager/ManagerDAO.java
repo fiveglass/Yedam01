@@ -8,7 +8,6 @@ import com.sugang.clas.Clas;
 import com.sugang.common.DAO;
 import com.sugang.ing.Ing;
 import com.sugang.member.Member;
-import com.sugang.member.MemberDAO;
 
 public class ManagerDAO extends DAO {
 	
@@ -293,22 +292,26 @@ public class ManagerDAO extends DAO {
 	             pstmt.setInt(2, classNo);
 	             result = pstmt.executeUpdate();
 	        } else if(selectNo==2) {
-	            String sql2 = "update class set class_limit = ? where class_no = ?";
+	            String sql = "update class set class_limit = ? where class_no = ?";
+	            pstmt = conn.prepareStatement(sql);
 	            pstmt.setInt(1, Integer.parseInt(changeValue));
 	            pstmt.setInt(2, classNo); 
 	            result = pstmt.executeUpdate();
 	        } else if(selectNo==3) {
-	        	String sql3 = "update class set class_date = ? where class_no = ?";
+	        	String sql = "update class set class_date = ? where class_no = ?";
+	        	 pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, changeValue);
 	            pstmt.setInt(2, classNo); 
 	            result = pstmt.executeUpdate();
 	        } else if(selectNo==4) {
-	        	String sql4 = "update class set class_semester = ? where class_no = ?";
+	        	String sql = "update class set class_semester = ? where class_no = ?";
+	        	 pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, changeValue);
 	            pstmt.setInt(2, classNo);
 	            result = pstmt.executeUpdate();
 	        }else if(selectNo==5) {
-	        	String sql5 = "update class set class_explain = ? where class_no = ?";
+	        	String sql = "update class set class_explain = ? where class_no = ?";
+	        	 pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, changeValue);
 	            pstmt.setInt(2, classNo);
 	            result = pstmt.executeUpdate();
@@ -340,12 +343,9 @@ public class ManagerDAO extends DAO {
 		}
 		return result;
 	}
+	
+	//
 
-	
-	
-	
-	
-	
 	
 	//총게시물 카운트
 		public int getCount(String plusQuery) {

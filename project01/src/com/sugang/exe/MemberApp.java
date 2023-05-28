@@ -2,6 +2,7 @@ package com.sugang.exe;
 
 import java.util.Scanner;
 
+import com.sugang.board.BoardService;
 import com.sugang.cart.CartService;
 import com.sugang.clas.ClassService;
 import com.sugang.ing.IngService;
@@ -13,6 +14,7 @@ public class MemberApp {
 	IngService ing = new IngService();
 	ClassService cs = new ClassService();
 	CartService cts = new CartService();
+	BoardService bs = new BoardService();
 	
 	public MemberApp() {
 		memberGo();
@@ -77,7 +79,10 @@ public class MemberApp {
 					run=false;
 				}
 				break;
-			case "5" : 
+			case "5" :
+				bs.memberBoardList();
+				break;
+			case "6" : 
 				MemberService.memberInfo = null;
 				run=false;
 				break;
@@ -86,7 +91,7 @@ public class MemberApp {
 	}
 	
 	public void memberMenu() {
-		System.out.println("1.마이페이지 | 2.내정보관리 | 3.수강꾸러미 | 4.강좌조회 | 5.로그아웃");
+		System.out.println("1.마이페이지 | 2.내정보관리 | 3.수강꾸러미 | 4.강좌조회 | 5.회원게시판 | 6.로그아웃");
 		
 	}
 }

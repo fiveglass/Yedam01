@@ -2,12 +2,15 @@ package com.sugang.exe;
 
 import java.util.Scanner;
 
+import com.sugang.board.BoardService;
 import com.sugang.manager.ManagerService;
+import com.sugang.member.MemberService;
 
 public class ManagerApp {
 	
 	Scanner sc = new Scanner(System.in);
 	ManagerService mns = new ManagerService();
+	BoardService bs = new BoardService();
 	
 	public ManagerApp() {
 		managerGo();
@@ -74,6 +77,13 @@ public class ManagerApp {
 					run=false;
 				}
 				break;	
+			case "5" :
+				bs.managerBoardList();
+				break;
+			case "6" :
+				MemberService.memberInfo = null;
+				run=false;
+				break;
  			}
 		}
 	}
@@ -82,6 +92,6 @@ public class ManagerApp {
 	
 	
 	public void managerMenu() {
-		System.out.println("1.회원조회 | 2.회원관리 | 3.강좌관리 | 4.수강내역관리");
+		System.out.println("1.회원조회 | 2.회원관리 | 3.강좌관리 | 4.수강내역관리 | 5.회원게시판 관리 | 6.로그아웃");
 	}
 }

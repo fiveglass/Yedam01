@@ -3,10 +3,13 @@ package com.sugang.manager;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sugang.board.Board;
+import com.sugang.board.BoardDAO;
 import com.sugang.cart.Cart;
 import com.sugang.clas.Clas;
 import com.sugang.ing.Ing;
 import com.sugang.member.Member;
+import com.sugang.member.MemberService;
 import com.sugang.utils.pageMenu;
 
 public class ManagerService {
@@ -81,14 +84,13 @@ public class ManagerService {
 		}
 	}
 	
-	
 	//회원조회 : 강좌로 조회 메뉴
-	public int inputClassNo() {
-		System.out.println("🧾강좌번호를 입력하여 해당 강좌 수강생 확인");
-		int classNo = Integer.parseInt(sc.nextLine());
-		
-		return classNo;
-	}
+		public int inputClassNo() {
+			System.out.println("🧾강좌번호를 입력하여 해당 강좌 수강생 확인");
+			int classNo = Integer.parseInt(sc.nextLine());
+			
+			return classNo;
+		}
 	
 	//회원조회 : 강좌로 조회
 	public void referClass(int classNo) {
@@ -122,6 +124,8 @@ public class ManagerService {
 			referClass(classNo);
 		}
 	}
+	
+	
 
 	
 	//회원조회 : 전화번호 조회
@@ -299,5 +303,6 @@ public class ManagerService {
 		}
 	}
 
+		
 	
 }
