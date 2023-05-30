@@ -23,8 +23,9 @@ public class ManagerApp {
 			String selectNo = sc.nextLine();
 			switch (selectNo) {
 			case "1" :
-				System.out.println("*** *** 회 원 조 회 *** ***");
+				System.out.println("🔎 회 원 조 회 🔎-------------------------------------------------예담복지관");
 				System.out.println("1.전체 수강생 조회 | 2.전화번호로 조회 | 3.이름으로 조회 | 4.강좌로 조회 | 5.뒤로가기");
+				System.out.println("-------------------------------------------------------------------------");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
 					mns.getMemberList();
@@ -40,7 +41,7 @@ public class ManagerApp {
 				}
 				break;
 			case "2" :
-				System.out.println("*** *** 회 원 관 리 *** ***");
+				System.out.println("⚙ 회 원 관 리 ⚙---------------------------예담복지관");
 				System.out.println("1.연락처 수정 | 2.회원 삭제 | 3.관리자계정생성 | 4.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
@@ -54,7 +55,7 @@ public class ManagerApp {
 				}
 				break;
 			case "3" :
-				System.out.println("*** *** 강 좌 관 리 *** ***");
+				System.out.println("📚 강 좌 관 리 📚--------------------예담복지관");
 				System.out.println("1.강좌등록 | 2.강좌수정 | 3.강좌삭제 | 4.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
@@ -68,7 +69,7 @@ public class ManagerApp {
 				}
 				break;	
 			case "4" :
-				System.out.println("*** *** 수 강 내 역 관 리 *** ***");
+				System.out.println("📋 수 강 내 역 관 리📋-------예담복지관");
 				System.out.println("1.수강 신청 내역 | 2.뒤로가기");
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
@@ -92,6 +93,7 @@ public class ManagerApp {
 	
 	
 	public void managerMenu() {
+		System.out.println("🙌 예 담 종 합 사 회 복 지 관 회 원 시 스 템 ----------------------------관리자용");
 		System.out.println("1.회원조회 | 2.회원관리 | 3.강좌관리 | 4.수강내역관리 | 5.회원게시판 관리 | 6.로그아웃");
 	}
 }

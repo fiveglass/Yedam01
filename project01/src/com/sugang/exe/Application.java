@@ -15,7 +15,9 @@ public class Application {
 	private void run() {
 		while (true) {
 			if(MemberService.memberInfo == null) {
-				System.out.println("1.로그인 | 2.회원가입 | 3.종료");
+				System.out.println("🙌 예 담 종 합 사 회 복 지 관 회 원 시 스 템 ");
+				System.out.println("     1.로그인 | 2.회원가입 | 3.종료");
+				System.out.println("---------------------------------------");
 				int menu = Integer.parseInt(sc.nextLine());
 				if(menu == 1) {
 					//로그인

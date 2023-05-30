@@ -7,7 +7,14 @@ public class Ing {
 	private String className;
 	private String classSemester;
 	private int ingTuition;
+	private int classNumber;
 	
+	public int getClassNumber() {
+		return classNumber;
+	}
+	public void setClassNumber(int classNumber) {
+		this.classNumber = classNumber;
+	}
 	//강좌조회를 위한 새로운 필드선언
 	private String memberName;
 	private int memberPhone;

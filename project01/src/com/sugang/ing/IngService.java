@@ -66,6 +66,7 @@ public class IngService {
 				selectNo = sc.nextLine();
 				if(selectNo.equals("1")) {
 					int result = IngDAO.getInstance().deleteStudying(classno);
+					int result2 = IngDAO.getInstance().modifyMember(classno);
 					
 					if(result > 0) {
 						System.out.println("👌수강취소 완료");

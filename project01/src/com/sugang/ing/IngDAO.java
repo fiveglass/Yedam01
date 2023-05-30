@@ -85,10 +85,7 @@ public class IngDAO extends DAO{
 				ing = new Ing();
 				ing.setClassSemester(rs.getString("class_semester"));
 				ing.setIngTuition(rs.getInt("ing_tuition"));
-				
 			}
-			
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -96,7 +93,25 @@ public class IngDAO extends DAO{
 		}
 		return ing;
 	}
-	 
+	
+	//수강취소 인원 수 줄이기
+	public int modifyMember(int classno) {
+		int result = 0;
+		try {
+			conn();
+			String sql = "UPDATE class SET class_number = class_number-1 WHERE class_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,classno);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconn();
+		}
+		return result;
+	}
 }
 
 	
