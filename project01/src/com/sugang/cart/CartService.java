@@ -52,12 +52,12 @@ public class CartService {
 		System.out.println("🗂강좌리스트");
 		List<Clas> list = CartDAO.getInstance().CartIndex(semester);
 		for(int i = 0; i < list.size(); i++) {
-			System.out.print("📖 강좌번호 :" + list.get(i).getClassNo());
-			System.out.print(" , 강좌명 :" + list.get(i).getClassName()); 
-			System.out.print(" , 선생님 :" + list.get(i).getClassTeacher());
-			System.out.print(" , 강의날 : " + list.get(i).getClassDate());
-			System.out.print(" , 정원 : " + list.get(i).getClassLimit());
-			System.out.println(" , 현인원 : " + list.get(i).getClassNumber());
+			System.out.print("📖 강좌번호 :" + list.get(i).getClassNo() + "\t");
+			System.out.print("| 강좌명 :" + list.get(i).getClassName() + "\t"); 
+			System.out.print("| 선생님 :" + list.get(i).getClassTeacher() + "\t");
+			System.out.print("| 강의날 : " + list.get(i).getClassDate()+ "\t");
+			System.out.print("| 정원 : " + list.get(i).getClassLimit()+ "\t");
+			System.out.println("| 현인원 : " + list.get(i).getClassNumber());
 
 		}
 		System.out.println("📂수강꾸러미에 담을 강좌번호를 입력해주세요.");
