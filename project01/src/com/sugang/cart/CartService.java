@@ -70,12 +70,14 @@ public class CartService {
 			if(list1.get(i).getClassNo()==classNo) {	
 				System.out.println("😭동일한 과목은 담을 수 없습니다.");
 				flag = false;
+				break;
 			}
-			
 			if(list1.get(i).getClassDate().equals(cs.getClassDate())) {
 				System.out.println("😭동일한 요일의 강좌를 중복 신청할 수 없습니다.");
 				flag = false;
+				break;
 			}
+			
 		}
 		
 		if(flag) {
